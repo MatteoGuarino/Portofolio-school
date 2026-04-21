@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agencia de creacion de paginas web modernas, landings y tiendas online con enfoque en conversion.">
+  <title>pag3s | Sitios Web Que Venden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-2: #12100b;
+      --panel: rgba(18, 15, 10, 0.78);
+      --panel-2: rgba(26, 21, 13, 0.94);
+      --line: rgba(240, 199, 115, 0.16);
+      --text: #f8f2e8;
+      --muted: #c8b79a;
+      --blue: #f0c773;
+      --violet: #b98937;
+      --violet-2: #8f6a2e;
+      --green: #f6dd9a;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+      --radius: 26px;
+      --display: "Clash Display", "Manrope", sans-serif;
+      --body: "Manrope", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(240, 199, 115, 0.13), transparent 18%),
+        radial-gradient(circle at 85% 10%, rgba(185, 137, 55, 0.2), transparent 22%),
+        radial-gradient(circle at 50% 80%, rgba(143, 106, 46, 0.16), transparent 28%),
+        linear-gradient(180deg, #050505 0%, #0c0905 40%, #050505 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1220px, calc(100% - 16px));
+      z-index: 50;
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(5, 8, 22, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--violet), var(--blue));
+      color: #08101f;
+      box-shadow: 0 12px 28px rgba(185, 137, 55, 0.45);
+      font-family: var(--display);
+    }
+
+    .logo small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    .nav-action,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn-primary,
+    .nav-action {
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: #07101f;
+      box-shadow: 0 20px 45px rgba(185, 137, 55, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn:hover,
+    .nav-action:hover {
+      transform: translateY(-3px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--blue);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      box-shadow: 0 0 14px rgba(240, 199, 115, 0.85);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.6rem, 7vw, 6.6rem);
+      line-height: 0.92;
+      margin: 22px 0 18px;
+      max-width: 720px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+      max-width: 760px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(16px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+      perspective: 1800px;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(8px);
+      opacity: 0.85;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .glow-a {
+      width: 180px;
+      height: 180px;
+      top: 40px;
+      right: 20px;
+      background: radial-gradient(circle, rgba(240, 199, 115, 0.75), transparent 70%);
+    }
+
+    .glow-b {
+      width: 220px;
+      height: 220px;
+      left: -10px;
+      bottom: 60px;
+      background: radial-gradient(circle, rgba(185, 137, 55, 0.6), transparent 70%);
+      animation-delay: -2s;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+    }
+
+    .dashboard {
+      position: absolute;
+      top: 42px;
+      left: 26px;
+      right: 90px;
+      padding: 18px;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(26, 21, 13, 0.95), rgba(8, 8, 8, 0.88));
+      transform: rotateY(-14deg) rotateX(7deg) translateZ(42px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .browser-top,
+    .mini-top {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .browser-top span,
+    .mini-top span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .dashboard-screen {
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 320px;
+      background:
+        radial-gradient(circle at top right, rgba(240, 199, 115, 0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dashboard-screen .tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+
+    .dashboard-screen h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .dashboard-screen p {
+      max-width: 340px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .dash-grid div {
+      min-height: 56px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-panel {
+      position: absolute;
+      right: 12px;
+      bottom: 68px;
+      width: 260px;
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(30, 24, 15, 0.94), rgba(8, 8, 8, 0.9));
+      transform: rotateY(18deg) rotateX(-6deg) translateZ(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 14px;
+    }
+
+    .mini-card small,
+    .mini-card span {
+      color: var(--muted);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.9rem;
+      margin: 6px 0;
+    }
+
+    .mini-graph {
+      height: 92px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-graph::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      height: 44px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(240, 199, 115, 0.75), rgba(185, 137, 55, 0.9), transparent);
+      filter: blur(8px);
+    }
+
+    .block {
+      padding: 110px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.5rem, 5vw, 4.1rem);
+      max-width: 680px;
+      margin-top: 16px;
+    }
+
+    .section-head p {
+      max-width: 420px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .slider-wrap {
+      perspective: 1800px;
+    }
+
+    .slider {
+      position: relative;
+      height: 420px;
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease;
+    }
+
+    .slide-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(100%, 350px);
+      padding: 16px;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(26, 21, 13, 0.92), rgba(8, 8, 8, 0.92));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.75s ease, opacity 0.75s ease, filter 0.75s ease;
+    }
+
+    .slide-card:hover {
+      transform: translate(-50%, -50%) scale(1.03) rotateX(4deg) rotateY(-4deg) !important;
+    }
+
+    .slide-cover {
+      height: 220px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide-cover::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 120px;
+      background: linear-gradient(to top, rgba(5, 5, 5, 0.72), transparent);
+    }
+
+    .slide-label {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      margin: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(5, 5, 5, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+    }
+
+    .slide-card p,
+    .service-card p,
+    .portfolio-card p,
+    .price-card p,
+    .price-card li,
+    .contact-copy p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .slider-controls button {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .services-grid,
+    .portfolio-grid,
+    .pricing-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 38px;
+    }
+
+    .service-card,
+    .portfolio-card,
+    .price-card,
+    .contact-panel,
+    .contact-form {
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .service-card {
+      padding: 22px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .service-card:hover,
+    .portfolio-card:hover,
+    .price-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(240, 199, 115, 0.26);
+    }
+
+    .icon-box {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(240, 199, 115, 0.22), rgba(185, 137, 55, 0.25));
+      margin-bottom: 16px;
+    }
+
+    .icon-box svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--text);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .service-card h3,
+    .portfolio-card h3,
+    .price-card h3,
+    .slide-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .portfolio-card {
+      overflow: hidden;
+    }
+
+    .portfolio-preview {
+      height: 220px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(240, 199, 115, 0.14), transparent 26%),
+        linear-gradient(135deg, rgba(185, 137, 55, 0.28), rgba(10, 10, 10, 0.7));
+    }
+
+    .preview-browser {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .preview-browser span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    .preview-shot {
+      height: calc(100% - 24px);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent),
+        var(--shot);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-shot::after {
+      content: "";
+      position: absolute;
+      inset: auto 20px 18px;
+      height: 58px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 -76px 0 rgba(255, 255, 255, 0.05),
+        0 -144px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .portfolio-copy {
+      padding: 22px;
+    }
+
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .portfolio-tags span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .price-card {
+      padding: 24px;
+    }
+
+    .price-card.featured {
+      background: linear-gradient(180deg, rgba(30, 24, 15, 0.96), rgba(8, 8, 8, 0.94));
+      border-color: rgba(240, 199, 115, 0.22);
+      transform: translateY(-10px);
+    }
+
+    .price-badge {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(240, 199, 115, 0.12);
+      color: var(--blue);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .price-line {
+      display: flex;
+      align-items: end;
+      gap: 6px;
+      margin: 18px 0;
+    }
+
+    .price-line strong {
+      font-family: var(--display);
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .price-line span {
+      color: var(--muted);
+      padding-bottom: 6px;
+    }
+
+    .price-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 24px;
+    }
+
+    .price-card li::before {
+      content: "•";
+      color: var(--green);
+      margin-right: 10px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .contact-panel,
+    .contact-form {
+      padding: 26px;
+    }
+
+    .contact-panel {
+      background: linear-gradient(180deg, rgba(26, 21, 13, 0.94), rgba(8, 8, 8, 0.92));
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-list li {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .contact-list span {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(240, 199, 115, 0.34);
+      transform: translateY(-1px);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .status {
+      min-height: 1.5rem;
+      color: var(--green);
+    }
+
+    .footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px) scale(0.98);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.left {
+      transform: translateX(-36px);
+    }
+
+    .reveal.right {
+      transform: translateX(36px);
+    }
+
+    .reveal.zoom {
+      transform: scale(0.9);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateX(0) translateY(0) scale(1);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -18px, 0); }
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .services-grid,
+      .portfolio-grid,
+      .pricing-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .dashboard {
+        right: 40px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 8px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-action {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 14vw, 4.8rem);
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard {
+        left: 8px;
+        right: 26px;
+      }
+
+      .mini-panel {
+        width: 220px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .block {
+        padding: 88px 0;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .dashboard {
+        left: 0;
+        right: 0;
+        top: 12px;
+      }
+
+      .mini-panel {
+        display: none;
+      }
+
+      .dash-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .slider {
+        height: 360px;
+      }
+
+      .slide-card {
+        width: min(100%, 290px);
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a href="#inicio" class="logo">
+        <div class="logo-badge">p</div>
+        <div>
+          pag3s
+          <small>Web Design Agency</small>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <a class="nav-action" href="#contacto">Solicitar propuesta</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="inicio">
+      <div class="hero-grid">
+        <div class="reveal left">
+          <span class="eyebrow">Diseno, conversion y presencia premium</span>
+          <h1>Creamos sitios web que venden por ti</h1>
+          <p>
+            Diseñamos páginas web, tiendas online y landing pages con una estética moderna,
+            estructura comercial y animaciones cuidadas para que tu marca se vea seria, actual y lista para convertir visitas en clientes.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn-primary">Quiero mi sitio web</a>
+            <a href="#portafolio" class="btn btn-secondary">Ver portafolio</a>
+          </div>
+
+          <div class="hero-stats">
+            <article class="stat">
+              <strong>+120</strong>
+              <span>sitios entregados</span>
+            </article>
+            <article class="stat">
+              <strong>3x</strong>
+              <span>mejor conversion promedio</span>
+            </article>
+            <article class="stat">
+              <strong>14 dias</strong>
+              <span>entrega media de proyectos</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal right">
+          <div class="glow glow-a"></div>
+          <div class="glow glow-b"></div>
+          <div class="scene">
+            <div class="dashboard">
+              <div class="browser-top"><span></span><span></span><span></span></div>
+              <div class="dashboard-screen">
+                <span class="tag">Conversion orientada a negocio</span>
+                <h3>Webs elegantes, rapidas y pensadas para cerrar ventas</h3>
+                <p>Diseño limpio, estructura comercial clara y una experiencia visual de agencia digital real.</p>
+                <div class="dash-grid">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mini-panel">
+              <div class="mini-top"><span></span><span></span><span></span></div>
+              <div class="mini-card">
+                <small>Leads generados</small>
+                <strong>+248%</strong>
+                <span>ultimo trimestre</span>
+              </div>
+              <div class="mini-graph"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Servicios</span>
+            <h2>Todo lo que necesita una marca para vender mejor online</h2>
+          </div>
+          <p>Construimos presencia digital con estética premium, velocidad real y secciones diseñadas para generar confianza y acción.</p>
+        </div>
+
+        <div class="slider-wrap reveal zoom">
+          <div class="slider" id="slider">
+            <article class="slide-card">
+              <div class="slide-cover" style="background-image: linear-gradient(135deg, rgba(5, 5, 5, 0.46), rgba(185, 137, 55, 0.18)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80');">
+                <span class="slide-label">SaaS / Empresa</span>
+              </div>
+              <h3>Pulse Metrics</h3>
+              <p>Web corporativa con look premium, narrativa clara y recorrido orientado a captar clientes.</p>
+              <div class="slide-meta">
+                <span>UI moderna</span>
+                <span>+41% leads</span>
+              </div>
+            </article>
+
+            <article class="slide-card">
+              <div class="slide-cover" style="background-image: linear-gradient(135deg, rgba(5, 5, 5, 0.46), rgba(240, 199, 115, 0.18)), url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80');">
+                <span class="slide-label">Ecommerce</span>
+              </div>
+              <h3>Mode Commerce</h3>
+              <p>Tienda online con experiencia editorial, catalogo limpio y flujo de compra pensado para vender.</p>
+              <div class="slide-meta">
+                <span>Shop experience</span>
+                <span>+62% ventas</span>
+              </div>
+            </article>
+
+            <article class="slide-card">
+              <div class="slide-cover" style="background-image: linear-gradient(135deg, rgba(5, 5, 5, 0.46), rgba(143, 106, 46, 0.2)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80');">
+                <span class="slide-label">Landing Page</span>
+              </div>
+              <h3>Launch Prime</h3>
+              <p>Página de lanzamiento con copy fuerte, CTA visibles y bloques listos para campañas de pago.</p>
+              <div class="slide-meta">
+                <span>Ads ready</span>
+                <span>+3.8x ROI</span>
+              </div>
+            </article>
+
+            <article class="slide-card">
+              <div class="slide-cover" style="background-image: linear-gradient(135deg, rgba(5, 5, 5, 0.46), rgba(246, 221, 154, 0.18)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80');">
+                <span class="slide-label">Marca Personal</span>
+              </div>
+              <h3>Nova Persona</h3>
+              <p>Sitio de autoridad con narrativa visual, secciones estratégicas y presencia profesional inmediata.</p>
+              <div class="slide-meta">
+                <span>Brand authority</span>
+                <span>+55% consultas</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="slider-controls">
+            <button id="prevSlide" aria-label="Anterior">←</button>
+            <button id="nextSlide" aria-label="Siguiente">→</button>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h8"/><path d="M15 15l2 2 4-4"/></svg>
+            </div>
+            <h3>Diseño de páginas web</h3>
+            <p>Sitios corporativos modernos, elegantes y pensados para que tu negocio proyecte confianza desde el primer vistazo.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h2l2.2 9.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+            </div>
+            <h3>Tiendas online</h3>
+            <p>Ecommerce ligeros y atractivos con experiencia de compra clara, visual potente y enfoque directo en conversion.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h6M8 16h4"/></svg>
+            </div>
+            <h3>Landing pages</h3>
+            <p>Páginas de campaña hechas para anuncios, lanzamientos y captacion con copy estructurado para vender.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l-3 3"/><circle cx="11" cy="11" r="6"/><path d="M17 17l3 3"/></svg>
+            </div>
+            <h3>Optimización SEO</h3>
+            <p>Arquitectura, velocidad y bases SEO para que tu sitio no solo se vea bien, sino que también atraiga trafico.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="portafolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Portafolio</span>
+            <h2>Diseños que parecen de marca grande aunque tu negocio apenas este escalando</h2>
+          </div>
+          <p>Cada proyecto se plantea como una pieza comercial: visual fuerte, experiencia clara y presencia digital de alto nivel.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card reveal left">
+            <div class="portfolio-preview">
+              <div class="preview-browser"><span></span><span></span><span></span></div>
+              <div class="preview-shot" style="--shot: linear-gradient(135deg, #3e2e12, #0f0d09);"></div>
+            </div>
+            <div class="portfolio-copy">
+              <h3>Quantum Agency</h3>
+              <p>Web de agencia creativa con visual inmersivo, bloques de autoridad y llamadas a la accion bien distribuidas.</p>
+              <div class="portfolio-tags">
+                <span>Branding</span>
+                <span>Lead Gen</span>
+                <span>Motion UI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card reveal zoom">
+            <div class="portfolio-preview">
+              <div class="preview-browser"><span></span><span></span><span></span></div>
+              <div class="preview-shot" style="--shot: linear-gradient(135deg, #5c4315, #11100c);"></div>
+            </div>
+            <div class="portfolio-copy">
+              <h3>Astra Clinic</h3>
+              <p>Sitio premium para servicios profesionales con estructura limpia, reserva de citas y SEO local.</p>
+              <div class="portfolio-tags">
+                <span>Salud</span>
+                <span>SEO</span>
+                <span>Responsive</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card reveal right">
+            <div class="portfolio-preview">
+              <div class="preview-browser"><span></span><span></span><span></span></div>
+              <div class="preview-shot" style="--shot: linear-gradient(135deg, #8f6a2e, #15110a);"></div>
+            </div>
+            <div class="portfolio-copy">
+              <h3>Neon Store</h3>
+              <p>Ecommerce con look editorial, secciones de producto memorables y una experiencia de compra pulida.</p>
+              <div class="portfolio-tags">
+                <span>Ecommerce</span>
+                <span>UX</span>
+                <span>Conversion</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="precios">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Precios</span>
+            <h2>Planes diseñados para venderte bien desde el primer lanzamiento</h2>
+          </div>
+          <p>Opciones claras para negocios, marcas personales y empresas que quieren una presencia online con nivel profesional real.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <span class="price-badge">Basico</span>
+            <h3>Básico</h3>
+            <p>Para quienes necesitan una presencia web profesional, limpia y lista para captar clientes.</p>
+            <div class="price-line">
+              <strong>$299</strong>
+              <span>USD</span>
+            </div>
+            <ul>
+              <li>One page profesional</li>
+              <li>Diseño responsive</li>
+              <li>Formulario de contacto</li>
+              <li>Entrega rapida</li>
+            </ul>
+            <a href="#contacto" class="btn btn-secondary">Elegir plan</a>
+          </article>
+
+          <article class="price-card featured reveal zoom">
+            <span class="price-badge">Mas vendido</span>
+            <h3>Pro</h3>
+            <p>Ideal para negocios que quieren verse premium, transmitir confianza y mejorar conversion.</p>
+            <div class="price-line">
+              <strong>$699</strong>
+              <span>USD</span>
+            </div>
+            <ul>
+              <li>Hasta 6 secciones</li>
+              <li>Animaciones modernas</li>
+              <li>SEO inicial</li>
+              <li>Diseño orientado a ventas</li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary">Quiero este plan</a>
+          </article>
+
+          <article class="price-card reveal">
+            <span class="price-badge">Premium</span>
+            <h3>Premium</h3>
+            <p>Para marcas que necesitan una solución completa, más presencia y funcionalidades a medida.</p>
+            <div class="price-line">
+              <strong>$1290</strong>
+              <span>USD</span>
+            </div>
+            <ul>
+              <li>Web avanzada o ecommerce</li>
+              <li>Estructura personalizada</li>
+              <li>SEO y performance</li>
+              <li>Soporte prioritario</li>
+            </ul>
+            <a href="#contacto" class="btn btn-secondary">Solicitar propuesta</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contacto">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Contacto</span>
+            <h2>Cuéntanos tu idea y te ayudamos a convertirla en una web que sí venda</h2>
+          </div>
+          <p>Escríbenos y te responderemos con una propuesta clara, tiempos estimados y la mejor opción para tu negocio.</p>
+        </div>
+
+        <div class="contact-grid">
+          <aside class="contact-panel reveal left">
+            <div class="contact-copy">
+              <h3>pag3s</h3>
+              <p>Diseñamos páginas web modernas y profesionales para negocios que quieren verse serios, vender mejor y competir con una imagen mucho más fuerte.</p>
+            </div>
+
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                matteo@guarino.co
+              </li>
+              <li>
+                <span>Respuesta</span>
+                Menos de 24 horas habiles
+              </li>
+              <li>
+                <span>Servicios</span>
+                Web corporativa, ecommerce, landing pages y SEO
+              </li>
+            </ul>
+          </aside>
+
+          <form class="contact-form reveal right" id="contactForm">
+            <label for="name">
+              Nombre
+              <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+            </label>
+
+            <label for="email">
+              Email
+              <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+            </label>
+
+            <label for="message">
+              Mensaje
+              <textarea id="message" name="message" placeholder="Cuéntanos qué tipo de sitio quieres crear." required></textarea>
+            </label>
+
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <p class="status" id="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <p>© 2026 pag3s. Sitios web modernos para marcas que quieren crecer.</p>
+      <a href="#inicio">Volver arriba</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+
+    const slider = document.getElementById("slider");
+    const slides = Array.from(slider.querySelectorAll(".slide-card"));
+    const prevSlide = document.getElementById("prevSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    let current = 0;
+    let autoplay;
+
+    function updateSlider() {
+      slides.forEach((slide, index) => {
+        const rawOffset = index - current;
+        let offset = rawOffset;
+
+        if (offset > slides.length / 2) offset -= slides.length;
+        if (offset < -slides.length / 2) offset += slides.length;
+
+        const abs = Math.abs(offset);
+        const x = offset * 250;
+        const z = abs === 0 ? 130 : abs === 1 ? 10 : -180;
+        const rotateY = offset * -16;
+        const scale = abs === 0 ? 1 : abs === 1 ? 0.88 : 0.72;
+        const opacity = abs > 2 ? 0 : abs === 2 ? 0.28 : 1;
+
+        slide.style.transform =
+          "translate(-50%, -50%) translateX(" + x + "px) translateZ(" + z + "px) rotateY(" + rotateY + "deg) scale(" + scale + ")";
+        slide.style.opacity = opacity;
+        slide.style.filter = abs > 1 ? "blur(1.4px)" : "blur(0)";
+        slide.style.zIndex = String(100 - abs);
+        slide.style.pointerEvents = abs > 1 ? "none" : "auto";
+      });
+    }
+
+    function moveSlider(step) {
+      current = (current + step + slides.length) % slides.length;
+      updateSlider();
+      resetAutoplay();
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplay);
+      autoplay = setInterval(() => moveSlider(1), 4200);
+    }
+
+    prevSlide.addEventListener("click", () => moveSlider(-1));
+    nextSlide.addEventListener("click", () => moveSlider(1));
+
+    slider.addEventListener("mousemove", (event) => {
+      const rect = slider.getBoundingClientRect();
+      const rx = (0.5 - (event.clientY - rect.top) / rect.height) * 8;
+      const ry = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
+      slider.style.transform = "rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+    });
+
+    slider.addEventListener("mouseleave", () => {
+      slider.style.transform = "rotateX(0deg) rotateY(0deg)";
+    });
+
+    updateSlider();
+    resetAutoplay();
+
+    const contactForm = document.getElementById("contactForm");
+    const status = document.getElementById("status");
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const data = new FormData(contactForm);
+      const name = String(data.get("name") || "").trim();
+      const email = String(data.get("email") || "").trim();
+      const message = String(data.get("message") || "").trim();
+
+      if (!name || !email || !message) {
+        status.textContent = "Completa todos los campos antes de enviar.";
+        return;
+      }
+
+      status.textContent = "Mensaje enviado correctamente. Te responderemos pronto.";
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
